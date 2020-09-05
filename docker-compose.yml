@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  diabetes-mysql:
+    container_name: diabetes-mysql
+    build:
+      context: .
+      dockerfile: Dockerfile-mysql
+    ports: 
+      - "8088:3036"
+
+  diabetes-app:
+    container_name: diabetes-app
+    build:
+      context: .
+      dockerfile: Dockerfile-app
+    depends_on:
+      - diabetes-mysql
+    ports:
+      - "8181:8181"
+    volumes:
+      - ./source_code:/app
+    environment:
+      FLASK_ENV: development

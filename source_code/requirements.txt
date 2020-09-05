@@ -1,0 +1,8 @@
+flask
+pymysql
+numpy
+sklearn
+pandas
+scipy
+tensorflow
+matplotlib
